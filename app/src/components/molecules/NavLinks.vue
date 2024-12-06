@@ -8,7 +8,7 @@
         :href="link.href"
         class="header-link"
       >
-      {{ link.label }}
+        {{ link.label }}
       </a>
     </div>
   </div>
@@ -20,15 +20,13 @@ export default {
     links: {
       type: Array,
       default: () => [
-        { label: "Login", href: "login" },
-        { label: "Subscription", href: "subscription" },
-        { label: "Contact", href: "contact" },
+        { label: 'Login', href: 'login' },
+        { label: 'Subscription', href: 'subscription' },
+        { label: 'Contact', href: 'contact' },
       ],
     },
   },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

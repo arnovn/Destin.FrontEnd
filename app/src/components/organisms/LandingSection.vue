@@ -2,7 +2,8 @@
   <div class="text-center">
     <!-- Heading -->
     <h1 class="text-3xl font-bold text-[#79553D] mb-4">
-      The Simplest Solution to Plan <br /> Your Next Vacation.
+      The Simplest Solution to Plan <br />
+      Your Next Vacation.
     </h1>
 
     <!-- Subheading -->
@@ -12,13 +13,10 @@
     </p>
 
     <!-- Search Bar -->
-<!--    <SearchBar />-->
+    <!--    <SearchBar />-->
   </div>
 </template>
 
 <script>
-
-export default {
-
-};
+export default {};
 </script>

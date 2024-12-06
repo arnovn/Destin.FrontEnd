@@ -3,10 +3,7 @@
 </template>
 
 <script setup lang="ts">
-
-import NavLinks from "@/components/molecules/NavLinks.vue";
+import NavLinks from '@/components/molecules/NavLinks.vue';
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
