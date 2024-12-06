@@ -12,11 +12,15 @@
       with personalized recommendations and seamless planning features.
     </p>
 
-    <!-- Search Bar -->
-    <!--    <SearchBar />-->
+    <SelectAndSubmit :options="['aa']"></SelectAndSubmit>
   </div>
 </template>
 
 <script>
-export default {};
+import { defineComponent } from 'vue';
+import SelectAndSubmit from '@/components/molecules/SelectAndSubmit.vue';
+
+export default defineComponent({
+  components: { SelectAndSubmit },
+});
 </script>
