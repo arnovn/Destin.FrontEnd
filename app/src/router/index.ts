@@ -1,5 +1,5 @@
-import HomePage from "@/pages/home/HomePage.vue";
-import NotFound from "@/pages/not-found/NotFound.vue";
+import HomePage from "@/components/pages/home/HomePage.vue";
+import NotFound from "@/components/pages/not-found/NotFound.vue";
 import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
 
 // Extend route meta to include authentication flags

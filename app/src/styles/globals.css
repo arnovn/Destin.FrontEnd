@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    @apply bg-color-bg font-spartan;
+}
+
+.submit-button {
+    @apply p-2 text-lg bg-color-pink text-white rounded-md pl-10 pr-10;
+}
+
+.header {
+    @apply flex justify-between items-center p-5;
+}
+
+.header-link {
+    @apply text-color-pink;
+}
+
+.header-logo {
+    @apply text-2xl font-bold text-color-brown;
+}
+
+.header-nav {
+    @apply flex gap-5 mr-8;
+}
