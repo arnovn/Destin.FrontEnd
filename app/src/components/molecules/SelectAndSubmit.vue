@@ -3,7 +3,7 @@
     <BaseSelect :options="options" v-model="selected" selectClass="w-40" />
     <button
       :class="[
-        'px-4 py-2 bg-[#C97B72] text-white rounded hover:bg-[#A05C55] transition',
+        'px-4 py-2 bg-color-pink text-white rounded hover:bg-color-pink-hover transition',
         buttonClass,
       ]"
       @click="handleClick"

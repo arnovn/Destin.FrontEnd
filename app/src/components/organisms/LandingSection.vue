@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <!-- Heading -->
-    <h1 class="text-3xl font-bold text-[#79553D] mb-4">
+    <h1 class="text-5xl text-color-brown mb-4">
       The Simplest Solution to Plan <br />
       Your Next Vacation.
     </h1>
@@ -11,8 +11,9 @@
       Effortlessly create, customize, and collaborate on your dream itinerary
       with personalized recommendations and seamless planning features.
     </p>
-
-    <SelectAndSubmit :options="['aa']"></SelectAndSubmit>
+    <div class="flex justify-center">
+      <SelectAndSubmit :options="['aa']"></SelectAndSubmit>
+    </div>
   </div>
 </template>
 

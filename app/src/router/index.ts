@@ -1,24 +1,32 @@
-import HomePage from "@/components/pages/home/HomePage.vue";
-import NotFound from "@/components/pages/not-found/NotFound.vue";
-import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
+import HomePage from '@/components/pages/home/HomePage.vue';
+import NotFound from '@/components/pages/not-found/NotFound.vue';
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import SubscriptionPage from '@/components/pages/subscription/SubscriptionPage.vue';
+import ContactPage from '@/components/pages/contact/ContactPage.vue';
 
 // Extend route meta to include authentication flags
 interface CustomRouteMeta {
-    requiresAuth?: boolean;
-    requiresUnAuth?: boolean;
+  requiresAuth?: boolean;
+  requiresUnAuth?: boolean;
 }
 
 // Define routes with meta type
 const routes: Array<RouteRecordRaw & { meta?: CustomRouteMeta }> = [
-    { path: '/', redirect: '/home' },
-    { path: '/home', component: HomePage , meta: { requiresAuth: false }},
-    { path: '/:notFound(.*)', component: NotFound }, // Catch-all route
+  { path: '/', redirect: '/home' },
+  { path: '/home', component: HomePage, meta: { requiresAuth: false } },
+  {
+    path: '/subscription',
+    component: SubscriptionPage,
+    meta: { requiresAuth: false },
+  },
+  { path: '/contact', component: ContactPage, meta: { requiresAuth: false } },
+  { path: '/:notFound(.*)', component: NotFound }, // Catch-all route
 ];
 
 // Create router
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
+  history: createWebHistory(),
+  routes,
 });
 
 // Navigation guard to handle authentication

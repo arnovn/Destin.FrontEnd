@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="sticky top-0 z-50 header">
     <a class="header-logo" href="/home">Destin.</a>
     <div class="header-nav">
       <a
