@@ -3,6 +3,7 @@ import NotFound from '@/components/pages/not-found/NotFound.vue';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import SubscriptionPage from '@/components/pages/subscription/SubscriptionPage.vue';
 import ContactPage from '@/components/pages/contact/ContactPage.vue';
+import SignInPage from '@/components/pages/Authentication/SignInPage.vue';
 
 // Extend route meta to include authentication flags
 interface CustomRouteMeta {
@@ -20,6 +21,7 @@ const routes: Array<RouteRecordRaw & { meta?: CustomRouteMeta }> = [
     meta: { requiresAuth: false },
   },
   { path: '/contact', component: ContactPage, meta: { requiresAuth: false } },
+  { path: '/login', component: SignInPage, meta: { requiresAuth: false } },
   { path: '/:notFound(.*)', component: NotFound }, // Catch-all route
 ];
 
