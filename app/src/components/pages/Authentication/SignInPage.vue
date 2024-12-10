@@ -17,17 +17,22 @@
               placeholder="Enter your email"
               class="input"
             />
+            <div class="flex items-center gap-2">
+              <BaseButton type="submit" class="button w-80">
+                {{ isLogin ? 'Log in' : 'Send signup code' }}
+              </BaseButton>
 
-            <BaseButton type="submit" class="button w-80">
-              {{ isLogin ? 'Log in' : 'Send signup code' }}
-            </BaseButton>
-            <p v-if="!isLogin" class="text-color-brown">
-              We use magic link registration, where an authentication code is
-              sent to the provided email address for secure signup.
-            </p>
+              <p
+                v-tooltip.bottom="
+                  'We use magic link registration, where an authentication code is sent to the provided email address for secure signup.'
+                "
+              >
+                ℹ️
+              </p>
+            </div>
           </form>
-          <p class="text-color-brown">or</p>
-          <div class="w-full flex justify-center gap-4">
+          <p class="text-color-brown mt-medium">or</p>
+          <div class="w-full flex justify-center gap-4 mt-2">
             <BaseButton
               @click="loginWithProvider('google')"
               class="social-button"
@@ -45,9 +50,12 @@
               {{
                 isLogin ? "Don't have an account?" : 'Already have an account?'
               }}
-              <a href="#" @click.prevent="toggleAuthMode">{{
-                isLogin ? 'Sign up' : 'Log in'
-              }}</a>
+              <a
+                href="#"
+                @click.prevent="toggleAuthMode"
+                class="font-bold underline"
+                >{{ isLogin ? 'Sign up' : 'Log in' }}</a
+              >
             </p>
           </div>
         </main>

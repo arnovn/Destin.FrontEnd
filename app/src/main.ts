@@ -1,8 +1,11 @@
-import { createApp } from 'vue'
-import App from '@/App.vue'
-import router from "@/router";
-import "./styles/globals.css";
+import { createApp } from 'vue';
+import App from '@/App.vue';
+import router from '@/router';
+import './styles/globals.css';
+import FloatingVue from 'floating-vue';
+import 'floating-vue/dist/style.css';
 
-const app = createApp(App)
+const app = createApp(App);
 app.use(router);
+app.use(FloatingVue);
 app.mount('#app');
