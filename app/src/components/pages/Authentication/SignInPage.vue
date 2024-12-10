@@ -85,24 +85,33 @@ export default {
       isLogin.value = !isLogin.value;
     };
 
-    const handleSubmit = async () => {
-      // if (isLogin.value) {
-      //   // Handle login with magic link
-      //   const { error } = await supabase.auth.signInWithOtp({ email: email.value });
-      //   if (error) {
-      //     console.error(error.message);
-      //   } else {
-      //     message.value = 'Magic link sent! Check your email to log in.';
+    const authWithMagicLink = async () => {
+      // TODO deftige validatie
+      if (!email.value) {
+        alert('Please enter an email address');
+        return;
+      }
+
+      //   try {
+      //     const { error } = await supabase.auth.signInWithOtp({
+      //       email: email.value,
+      //       options: {
+      //         shouldCreateUser: !isLogin.value, // Allow registration if `isLogin` is false
+      //       },
+      //     });
+      //
+      //     if (error) {
+      //       console.error('Error sending magic link:', error.message);
+      //       alert('Error sending magic link: ' + error.message);
+      //     } else {
+      //       alert(
+      //           'A magic link has been sent to your email. Please check your inbox.'
+      //       );
+      //     }
+      //   } catch (err) {
+      //     console.error(err);
+      //     alert('An unexpected error occurred.');
       //   }
-      // } else {
-      //   // Handle signup with magic link
-      //   const { error } = await supabase.auth.signInWithOtp({ email: email.value });
-      //   if (error) {
-      //     console.error(error.message);
-      //   } else {
-      //     message.value = 'Magic link sent! Check your email to complete registration.';
-      //   }
-      // }
     };
 
     const loginWithProvider = async (provider: string) => {
@@ -117,7 +126,7 @@ export default {
       email,
       message,
       toggleAuthMode,
-      handleSubmit,
+      handleSubmit: authWithMagicLink,
       loginWithProvider,
     };
   },
