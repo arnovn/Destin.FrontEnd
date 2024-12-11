@@ -1,28 +1,18 @@
-import { createClient } from '@supabase/supabase-js';
+import type { AuthState } from '@/types/auth';
+import { supabaseService } from '@/services/supabaseService';
 
 export const authActions = {
   async sendMagicLink(
-    state: any,
+    store: AuthState,
     email: string,
     isLogin: boolean,
   ): Promise<void> {
-    state.isLoading = true;
-    state.errorMessage = '';
-    const supabaseUrl = '<YOUR_SUPABASE_URL>';
-    const supabaseAnonKey = '<YOUR_SUPABASE_ANON_KEY>';
-
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
-
+    store.isLoading = true;
+    store.errorMessage = '';
     try {
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          shouldCreateUser: !isLogin,
-        },
-      });
-
+      const { error } = await supabaseService.sendMagicLink(email, !isLogin);
       if (error) {
-        state.errorMessage = error.message;
+        store.errorMessage = error.message;
         console.error('Error sending magic link:', error.message);
       } else {
         alert(
@@ -30,28 +20,20 @@ export const authActions = {
         );
       }
     } catch (err) {
-      state.errorMessage = 'An unexpected error occurred.';
+      store.errorMessage = 'An unexpected error occurred.';
       console.error(err);
     } finally {
-      state.isLoading = false;
+      store.isLoading = false;
     }
   },
 
-  async fetchUser(state: unknown): Promise<void> {
-    const supabaseUrl = '<YOUR_SUPABASE_URL>';
-    const supabaseAnonKey = '<YOUR_SUPABASE_ANON_KEY>';
-
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
-    const { data } = await supabase.auth.getSession();
-    state.user = data.session?.user || null;
+  async fetchUser(store: AuthState): Promise<void> {
+    const { data } = await supabaseService.getSession();
+    store.user = data.session?.user || null;
   },
 
-  async signOut(state: unknown): Promise<void> {
-    const supabaseUrl = '<YOUR_SUPABASE_URL>';
-    const supabaseAnonKey = '<YOUR_SUPABASE_ANON_KEY>';
-
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
-    await supabase.auth.signOut();
-    state.user = null;
+  async signOut(store: AuthState): Promise<void> {
+    await supabaseService.signOut();
+    store.user = null;
   },
 };

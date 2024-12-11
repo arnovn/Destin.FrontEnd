@@ -1,8 +1,8 @@
-import { authState } from './state';
+import {AuthState} from "@/types/auth";
 
 export const authGetters = {
-  isAuthenticated: (state: ReturnType<typeof authState>) => !!state.user,
-  getUser: (state: ReturnType<typeof authState>) => state.user,
-  getLoadingState: (state: ReturnType<typeof authState>) => state.isLoading,
-  getErrorMessage: (state: ReturnType<typeof authState>) => state.errorMessage,
+  isAuthenticated: (state: AuthState) => !!state.user,
+  getUser: (state: AuthState) => state.user,
+  getLoadingState: (state: AuthState) => state.isLoading,
+  getErrorMessage: (state: AuthState) => state.errorMessage,
 };

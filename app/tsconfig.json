@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "baseUrl": ".",
+    "target": "esnext", // Or at least "es2020"
+    "module": "esnext", // Supports import.meta
+    "moduleResolution": "node", // Recommended for modern setups
+    "strict": true, // Optional: Enables strict typing
+    "esModuleInterop": true, // Optional: Interop for CommonJS modules
+    "skipLibCheck": true, // Optional: Speeds up compilation
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node", "vite/client"],
+    "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     }

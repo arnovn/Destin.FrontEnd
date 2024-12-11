@@ -69,6 +69,7 @@ import { ref } from 'vue';
 import NavBar from '@/components/organisms/NavBar.vue';
 import BaseInputField from '@/components/atoms/BaseInputField.vue';
 import BaseButton from '@/components/atoms/BaseButton.vue';
+import { useAuthStore } from '@/store/auth';
 
 export default {
   components: {
@@ -77,6 +78,7 @@ export default {
     NavBar,
   },
   setup() {
+    const authStore = useAuthStore();
     const isLogin = ref(true); // State to toggle between login and signup
     const email = ref('');
     const message = ref('');
@@ -92,33 +94,22 @@ export default {
         return;
       }
 
-      //   try {
-      //     const { error } = await supabase.auth.signInWithOtp({
-      //       email: email.value,
-      //       options: {
-      //         shouldCreateUser: !isLogin.value, // Allow registration if `isLogin` is false
-      //       },
-      //     });
-      //
-      //     if (error) {
-      //       console.error('Error sending magic link:', error.message);
-      //       alert('Error sending magic link: ' + error.message);
-      //     } else {
-      //       alert(
-      //           'A magic link has been sent to your email. Please check your inbox.'
-      //       );
-      //     }
-      //   } catch (err) {
-      //     console.error(err);
-      //     alert('An unexpected error occurred.');
-      //   }
+      try {
+        await authStore.sendMagicLink(email.value, isLogin.value);
+        message.value = `A magic link has been sent to ${email.value}. Check your inbox.`;
+      } catch (err) {
+        console.error('Error with magic link login:', err);
+        message.value = 'An error occurred while sending the magic link.';
+      }
     };
 
     const loginWithProvider = async (provider: string) => {
-      // const { error } = await supabase.auth.signInWithOAuth({ provider });
-      // if (error) {
-      //   console.error(`Error with ${provider} login:`, error.message);
-      // }
+      try {
+        // Logic for OAuth provider login (not implemented in your auth store)
+        alert(`Login with ${provider} is not yet implemented.`);
+      } catch (err) {
+        console.error(`Error with ${provider} login:`, err);
+      }
     };
 
     return {
