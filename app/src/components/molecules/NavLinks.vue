@@ -3,7 +3,7 @@
     <a class="header-logo" href="/home">Destin.</a>
     <div class="header-nav">
       <a
-        v-for="link in links"
+        v-for="link in dynamicLinks"
         :key="link.label"
         :href="link.href"
         class="header-link"
@@ -15,7 +15,28 @@
 </template>
 
 <script>
+import { useAuthStore } from '@/store/auth';
+
 export default {
+  computed: {
+    isAuth() {
+      const authStore = useAuthStore();
+      return authStore.isAuthenticated;
+    },
+    dynamicLinks() {
+      return this.isAuth
+        ? [
+            { label: 'Subscription', href: 'subscription' },
+            { label: 'Contact', href: 'contact' },
+            { label: 'Logout', href: 'logout' },
+          ]
+        : [
+            { label: 'Subscription', href: 'subscription' },
+            { label: 'Contact', href: 'contact' },
+            { label: 'Login', href: 'login' },
+          ];
+    },
+  },
   props: {
     links: {
       type: Array,
