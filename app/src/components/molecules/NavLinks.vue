@@ -6,6 +6,7 @@
         v-for="link in dynamicLinks"
         :key="link.label"
         :href="link.href"
+        @click="handleClick($event, link)"
         class="header-link"
       >
         {{ link.label }}
@@ -28,7 +29,11 @@ export default {
         ? [
             { label: 'Subscription', href: 'subscription' },
             { label: 'Contact', href: 'contact' },
-            { label: 'Logout', href: 'logout' },
+            {
+              label: 'Logout',
+              href: 'logout',
+              onClick: async () => await this.logout(),
+            },
           ]
         : [
             { label: 'Subscription', href: 'subscription' },
@@ -45,6 +50,20 @@ export default {
         { label: 'Subscription', href: 'subscription' },
         { label: 'Contact', href: 'contact' },
       ],
+    },
+  },
+  methods: {
+    async logout() {
+      console.log('try logout');
+      const authStore = useAuthStore();
+      await authStore.signOut();
+      this.$router.push('/login');
+    },
+    handleClick(event, link) {
+      if (link.onClick) {
+        event.preventDefault(); // Prevent default navigation
+        link.onClick(); // Execute custom logic
+      }
     },
   },
 };

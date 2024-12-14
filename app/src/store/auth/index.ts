@@ -29,5 +29,11 @@ export const useAuthStore = defineStore('auth', {
     async signOut() {
       return authActions.signOut(this);
     },
+    async verifyOtp(token: string, type: string) {
+      return authActions.verifyOtp(this, token, type);
+    },
+    async refreshSession() {
+      return authActions.refreshSession(this);
+    },
   },
 });

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { supabase } from '@/services/supabaseService';
+import { supabaseService } from '@/services/supabaseService';
 
 export default {
   data() {
@@ -30,10 +30,7 @@ export default {
       }
 
       // Call Supabase's verifyOtp method
-      const { data, error } = await supabase.auth.verifyOtp({
-        token,
-        type, // Can be 'magiclink' or 'email'
-      });
+      const { data, error } = supabaseService.verifyOtp(token, type);
 
       if (error) {
         throw new Error(error.message);
@@ -45,7 +42,7 @@ export default {
 
       // Redirect to dashboard or another page
       setTimeout(() => {
-        this.$router.push('/dashboard');
+        this.$router.push('/');
       }, 2000);
     } catch (err) {
       // Handle errors

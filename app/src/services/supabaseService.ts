@@ -1,5 +1,11 @@
-import { createClient } from '@supabase/supabase-js';
-import {vueConfig} from "../../vue.config";
+import {
+  AuthError,
+  AuthResponse,
+  createClient,
+  UserResponse,
+  VerifyOtpParams,
+} from '@supabase/supabase-js';
+import { vueConfig } from '../../vue.config';
 
 const supabase = createClient(vueConfig.supabaseUrl, vueConfig.supabaseAnonKey);
 
@@ -15,7 +21,22 @@ export const supabaseService = {
     return await supabase.auth.getSession();
   },
 
-  async signOut() {
+  async getUser(accessToken: string): Promise<UserResponse> {
+    return await supabase.auth.getUser(accessToken);
+  },
+
+  async signOut(): Promise<{ error: AuthError | null }> {
     return await supabase.auth.signOut();
+  },
+
+  async verifyOtp(token: string, type: string): Promise<AuthResponse> {
+    return await supabase.auth.verifyOtp({
+      token,
+      type, // Can be 'magiclink' or 'email'
+    } as VerifyOtpParams);
+  },
+
+  async refreshSession(refreshToken: string): Promise<AuthResponse> {
+    return await supabase.auth.refreshSession({ refresh_token: refreshToken });
   },
 };
