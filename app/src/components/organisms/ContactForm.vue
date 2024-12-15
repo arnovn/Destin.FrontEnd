@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit" class="contact-form">
-    <FormField id="email" label="Email">
+    <FormField id="email" label="Email" class="mb-10">
       <BaseInputField
         id="email"
         type="email"
@@ -9,7 +9,7 @@
       />
     </FormField>
 
-    <FormField id="topic" label="Topic">
+    <FormField id="topic" label="Topic" class="mb-10">
       <BaseInputField id="topic" placeholder="My topic" v-model="topic" />
     </FormField>
 

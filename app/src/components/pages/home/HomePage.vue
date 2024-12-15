@@ -1,6 +1,8 @@
 <template>
-  <NavBar />
-  <LandingSection class="mt-large" />
+  <div>
+    <NavBar />
+    <LandingSection class="mt-large" />
+  </div>
 </template>
 
 <script lang="ts">

@@ -5,7 +5,7 @@
     :placeholder="placeholder"
     :value="modelValue"
     @input="onInput"
-    class="p-2 text-lg rounded-md w-full shadow-md mb-10"
+    class="p-2 text-lg rounded-md w-full shadow-md"
   />
 </template>
 

@@ -19,7 +19,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import SelectAndSubmit from '@/components/molecules/SelectAndSubmit.vue';
+import SelectAndSubmit from '@/components/molecules/LocationSearch.vue';
 
 export default defineComponent({
   components: { SelectAndSubmit },
